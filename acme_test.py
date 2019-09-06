@@ -26,12 +26,12 @@ class AcmeReportTests(unittest.TestCase):
 
     def test_legal_names(self):
         names = []
-        for x in range(len(generate_products())):
-            names.append(generate_products()[x].name)
-
-        for x in range(len(names)):
-            self.assertIn(ADJECTIVES, names[x])
-            self.assertIn(NOUNS, names[x])
+        prod_list = generate_products()
+        adj_noun = ADJECTIVES + NOUNS
+        for prod in prod_list:
+            words = prod.name.split()
+            for word in words:
+                self.assertIn(word, adj_noun)
 
 if __name__ == '__main__':
     unittest.main()
